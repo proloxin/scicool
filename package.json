@@ -1,0 +1,11 @@
+{
+  "name": "scicool",
+  "version": "0.1.0",
+  "main": "index.js",
+  "dependencies": {
+    "koa":"2.11.0",
+    "koa-route":"3.2.0",
+    "koa-static":"5.0.0"
+  }
+
+}
