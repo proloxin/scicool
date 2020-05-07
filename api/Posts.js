@@ -11,13 +11,15 @@ router.get('/getPostList',async(ctx)=>{
         let findTerms = {}
         if (author) findTerms = {author: author}
         if (category) findTerms = {category: category}
+        if (author && category) findTerms={author: author,category: category} 
         const postsSchema = mongoose.model('postsSchema')
-        let res = await postsSchema.find(findTerms).sort('-lastTime').limit(per).skip((page-1)*per)
+        let res = await postsSchema.find(findTerms).sort('-lastTime').limit(per).skip((page-1)*per) 
         ctx.body = {
             code : 200,
             data : res
         }
     } catch (error) {
+        console.log(error)
         ctx.body = {
             code : 500,
             data : error
