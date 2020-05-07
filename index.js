@@ -8,10 +8,20 @@ let router = new Router()
 let posts = require('./api/Posts')
 let subPosts = require('./api/subPosts')
 const {connect,initSchemas} = require('./database/init')
-
+const cors = require('koa-cors')
 const home = serve(path.join(__dirname)+'/public/')
 app.use(home)
 
+app.use(cors({
+    origin: function (ctx) {
+        return "*"
+    },
+    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+    maxAge: 5,
+    credentials: true,
+    allowMethods: ['GET', 'POST', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}))
 app.use(bodyparser())
 
 ;(async()=>{
