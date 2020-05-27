@@ -30,8 +30,8 @@ exports.connect = ()=>{
 
         mongoose.connection.on('error',err=>{
             console.log('***********数据库错误***********')
-            if(maxConnectTimes<3){
-                maxConnectTimes++
+            if(maxConnectTime<3){
+                maxConnectTime++
                 mongoose.connect(db)   
             }else{
                 reject(err)
